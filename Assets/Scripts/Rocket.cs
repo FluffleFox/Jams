@@ -12,7 +12,7 @@ public class Rocket : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(transform.right * Time.deltaTime * 10.0f, Space.World);
+        transform.Translate(transform.right * Time.deltaTime * 20.0f, Space.World);
         if (Vector3.Distance(transform.position, player.transform.position) > 200.0f)
         {
             player.GetComponent<PlayerV2>().GetToPool(gameObject);
@@ -25,7 +25,11 @@ public class Rocket : MonoBehaviour
         Vector2 direction = player.transform.position - transform.position;
         player.GetComponent<Rigidbody2D>().AddForce(direction.normalized * explosionForce / (1 + (Vector2.SqrMagnitude(direction)* Vector2.SqrMagnitude(direction))));
         player.GetComponent<PlayerV2>().GetToPool(gameObject);
+
         //Pierdut tu Particle
+        if (collision.gameObject.GetComponent<PlatformOver>() != null)
+        { collision.gameObject.GetComponent<PlatformOver>().explode(); }
+
         transform.position = Vector3.up * 5000.0f;
     }
 }
