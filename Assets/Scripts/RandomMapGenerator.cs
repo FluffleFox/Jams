@@ -20,6 +20,7 @@ public class RandomMapGenerator : MonoBehaviour
             Instantiate(((Random.Range(0,100)>10)?platform:speedPlatform), new Vector3(currentx, Random.Range(Mathf.Max(-5.0f, lastY - 2), Mathf.Min(5.0f, lastY + 2))+5.0f, Random.Range(-1.0f,1.0f)), Quaternion.identity);
             Instantiate(((Random.Range(0, 100) > 10) ? platform : speedPlatform), new Vector3(currentx, Random.Range(Mathf.Max(-5.0f, lastY - 2), Mathf.Min(5.0f, lastY + 2))-5.0f, Random.Range(-1.0f, 1.0f)), Quaternion.identity);
             currentx += Random.Range(0.25f, 0.75f);
+            //if (currentx > 1000) break;
         }
     }
 }
