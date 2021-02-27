@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Transform currentPlatform;
+    public Transform currentPlatform;
     Rigidbody2D rb;
     public float maxSpeed = 5.0f;
     float explosionForce;
@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.right * 12.0f;
        // jumpClass = GetComponent<CustomPhycics>();
     }
     void Update()
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y < -10)
         {
             transform.position = new Vector3(-3.75f, 2.75f, 0);
-            map.Generate();
+            //map.Generate();
         }
     }
 
